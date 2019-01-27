@@ -1,0 +1,17 @@
+# ds_store
+.DS_Store
+
+# log files
+*.log
+
+# compiled folder
+dist
+
+# node packages
+node_modules
+
+# backup folder
+bak
+
+# images
+*.jpg
