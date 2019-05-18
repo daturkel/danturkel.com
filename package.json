@@ -32,5 +32,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dan turkel",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "browser-sync": "^2.26.5"
+  }
 }

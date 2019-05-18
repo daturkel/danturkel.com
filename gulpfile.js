@@ -14,25 +14,25 @@ var debug = require('gulp-debug');
 var del = require('del');
 var filter = require('gulp-filter');
 var fileinclude = require('gulp-file-include');
-var connect = require('gulp-connect');
+var browserSync = require('browser-sync').create();
 
-gulp.task('update', function() {
+function update() {
     return gulp.src('src/**/*.html')
         .pipe(fileinclude({
             prefix: '@@',
             basepath: 'src'}))
         .pipe(filter(['**','!src/templates/*']))
         .pipe(gulp.dest('dist'))
-        .pipe(connect.reload());
-});
+        .pipe(browserSync.stream());
+}
 
-gulp.task('images', function () {
+function images() {
     return gulp.src('src/img/**/*')
         .pipe(gulp.dest('dist/img'))
-        .pipe(connect.reload());
-});
+        .pipe(browserSync.stream());
+}
 
-gulp.task('styles', function () {
+function styles() {
     return gulp.src('src/sass/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass(
@@ -52,49 +52,53 @@ gulp.task('styles', function () {
         .pipe(cssnano())
         .pipe(sourcemaps.write('maps'))
         .pipe(gulp.dest('dist/css'))
-        .pipe(connect.reload());
-});
+        .pipe(browserSync.stream());
+}
 
-
-gulp.task('copy-css', function () {
+function copy_css() {
     return gulp.src('src/ext-css/**/*.css')
         .pipe(newer('dist/css'))
         .pipe(gulp.dest('dist/css'))
-        .pipe(connect.reload());
-});
+        .pipe(browserSync.stream());
+}
 
-gulp.task('copy-js', function () {
+function copy_js() {
     return gulp.src('src/ext-js/**/*.js')
         .pipe(newer('dist/js'))
         .pipe(gulp.dest('dist/js'))
         //.pipe(rename({suffix: '.min'}))
         //.pipe(uglify())
         //.pipe(gulp.dest('dist/js'))
-        .pipe(connect.reload());
-});
+        .pipe(browserSync.stream());
+}
 
-gulp.task('clean', function() {
+function clean() {
     return del(['dist/css', 'dist/**/*.html', 'js']);
+}
+
+gulp.task('default', done => {
+    gulp.series(update, styles, copy-css, copy-js, images);
+    done();
 });
 
-gulp.task('webserver', function() {
-    connect.server({
-        root: 'dist',
-        host: 'danturkel.test',
-        livereload: true
+function reload() {
+    browserSync.reload();
+}
+
+function watch() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist"
+        }
     });
-});
-
-gulp.task('default', function() {
-    gulp.start('update', 'styles', 'copy-css', 'copy-js', 'images')
-});
-
-gulp.task('watch', function() {
-    gulp.start('update','styles','webserver');
-    gulp.watch('src/**/*.html', ['update']);
-    gulp.watch('src/ext-css/**/*.css', ['copy-css']);
-    gulp.watch('src/sass/**/*.scss', ['styles']);
-    gulp.watch('src/ext-js/**/*.js', ['copy-js']);
-    gulp.watch('src/img/**/*',['images']);
+    gulp.watch('src/**/*.html').on('change',gulp.series(update,reload));
+    gulp.watch('src/ext-css/**/*.css').on('change',gulp.series(copy_css,reload));
+    gulp.watch('src/sass/**/*.scss').on('change',gulp.series(styles,reload));
+    gulp.watch('src/ext-js/**/*.js').on('change',gulp.series(copy_js,reload));
+    gulp.watch('src/img/**/*').on('change',gulp.series(images,reload));
 //    gulp.watch('src/js/**/*.js', ['scripts']);
-});
+}
+
+exports.watch = watch;
+var build = gulp.parallel(update,styles,watch);
+gulp.task('build',build);
