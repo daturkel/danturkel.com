@@ -77,7 +77,7 @@ function clean() {
 }
 
 gulp.task('default', done => {
-    gulp.series(update, styles, copy-css, copy-js, images);
+    gulp.series(update, styles, copy_css, copy_js, images);
     done();
 });
 
