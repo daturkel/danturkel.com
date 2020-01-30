@@ -34,12 +34,13 @@ $button-pad: 35px;
 }
 
 // // imports
-@import './node_modules/bulma/sass/utilities/_all.sass';
-@import './node_modules/bulma/sass/base/_all.sass';
-@import './node_modules/bulma/sass/grid/columns.sass';
-@import './node_modules/bulma/sass/elements/title.sass';
-@import './node_modules/bulma/sass/elements/container.sass';
-@import './node_modules/bulma/sass/elements/content.sass';
+@import '../ext/bulma/sass/utilities/_all.sass';
+@import '../ext/bulma/sass/base/_all.sass';
+@import '../ext/bulma/sass/grid/columns.sass';
+@import '../ext/bulma/sass/elements/title.sass';
+@import '../ext/bulma/sass/elements/container.sass';
+@import '../ext/bulma/sass/elements/content.sass';
+@import '../ext/baguetteBox.js/src/baguetteBox.scss';
 
 // after-bulma variables:
 $light-color: $grey-light;
@@ -49,6 +50,20 @@ $light-color: $grey-light;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+//
+.baguetteBox-button, .baguetteBox-button:hover, .baguetteBox-button:focus {
+  background-color: rgba(255,255,255,0);
+  border-radius: 0;
+  border: 0;
+  outline: 0;
+}
+
+.baguetteBox-button {
+  &:hover polyline {
+    @include shift(stroke,333ms,ease)
+    stroke: rgba(255,255,255,0.75);
+  }
 }
 
 /* Dan Turkel custom style below */
@@ -154,21 +169,6 @@ a.photo-link {
 
 .content h2.title {
   margin-bottom: 0.5rem;
-}
-
-// baguette-box overrides
-.baguetteBox-button, .baguetteBox-button:hover, .baguetteBox-button:focus {
-  background-color: rgba(255,255,255,0);
-  border-radius: 0;
-  border: 0;
-  outline: 0;
-}
-
-.baguetteBox-button {
-  &:hover polyline {
-    @include shift(stroke,333ms,ease)
-    stroke: rgba(255,255,255,0.75);
-  }
 }
 
 // asciinema overrides

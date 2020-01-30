@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7262722-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-7262722-4');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Rubik:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700&text=DanTurkel" rel="stylesheet">
+    <link rel="stylesheet" text="text/css" href="/css/style.css">
+    {% if gallery %}
+    <script src="/js/baguetteBox.min.js"></script>
+    {% endif %}
+  </head>
+  <body>
+    <div name="top" class="container" id="wrapper">
+      <div class="columns">
+        <div class="column">
+          <div class="title-stack">
+            <p class="title is-1">
+              <a href="/">Dan Turkel</a>
+            </p>
+            <p class="subtitle is-3">
+              {{ subtitle }}
+            </p>
+          </div>
+        </div> <!-- end column -->
+      </div> <!-- end columns -->
+      <div class="columns">
+        <div class="column is-one-third nav">
+          <ul>
+            {% for page in pages %}
+            <li><a href="/{{ page["file_name"] }}"{{ " class=\"active\"" if active is defined and active == page["title"] }}>{{ page["title"] }}</a></li>
+            {% endfor %}
+          </ul>
+          {% if caption %}
+          <div class="caption">{{ caption }}</div>
+          {% endif %}
+        </div> <!-- end nav column -->
+        <div class="column is-two-thirds">
+          <div class="content">
+      {{ content | indent(6) }}
+            {% if gallery %}
+              <div class="baguette-gallery">
+                {% for photo in photos %}
+                <a class="photo-link" href="{{ photo }}.jpg"><img src="{{ photo }}_small.jpg"></a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div> <!-- end column -->
+      </div> <!-- end columns -->
+      <div class="columns">
+        <div class="column is-two-thirds is-hidden-mobile is-hidden-tablet-only">
+        </div>
+        <div class="column">
+          <div class="content foot">
+          </div>
+        </div>
+      </div> <!-- end columns -->
+    </div> <!-- end container -->
+    {% if gallery %}
+    <script>
+      baguetteBox.run('.baguette-gallery', {
+        captions: false,
+        noScrollbars: true,
+        async: true,
+        preload: 3,
+        animation: false,
+      });
+    </script>
+    {% endif %}
+  </body>
+</html>

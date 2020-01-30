@@ -1,0 +1,6 @@
+[submodule "src/ext/baguetteBox.js"]
+	path = src/ext/baguetteBox.js
+	url = git@github.com:feimosi/baguetteBox.js.git
+[submodule "src/ext/bulma"]
+	path = src/ext/bulma
+	url = git@github.com:jgthms/bulma.git
