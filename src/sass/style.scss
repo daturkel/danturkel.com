@@ -7,14 +7,6 @@ $button-pad: 35px;
 
 
 // // mixins
-// https://gist.github.com/johnferrie/3836468
-@mixin filter($filter-type,$filter-amount) {
-  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
-  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
-  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
-  -o-filter: $filter-type+unquote('(#{$filter-amount})');
-  filter: $filter-type+unquote('(#{$filter-amount})');
-}
 
 // https://gist.github.com/bmuenzenmeyer/6181032
 //usage: @include shift([property],[duration],[easing]);
@@ -23,14 +15,6 @@ $button-pad: 35px;
 	-moz-transition: $property $duration $ease;
 	-o-transition: $property $duration $ease;
 	transition: $property $duration $ease;
-}
-
-@mixin svg-mask($color,$size,$url,$p1,$p2) {
-  background: $color;
-  mask: url($url) no-repeat $p1 $p2;
-  mask: $size;
-  -webkit-mask: url($url) no-repeat $p1 $p2;
-  -webkit-mask-size: $size;
 }
 
 // // imports
