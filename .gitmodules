@@ -1,0 +1,3 @@
+[submodule "theme/scss/modern-normalize"]
+	path = theme/scss/modern-normalize
+	url = https://github.com/sindresorhus/modern-normalize
