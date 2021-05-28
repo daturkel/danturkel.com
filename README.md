@@ -2,6 +2,8 @@
 
 Source for danturkel.com, for use with the [Pelican](https://github.com/getpelican/pelican/) static site generator.
 
+This work is MIT Licensed, but if you use the templates/stylesheets, I'd love a shoutout!
+
 ## Acknowledgements
 
 - [modern-normalize by 
