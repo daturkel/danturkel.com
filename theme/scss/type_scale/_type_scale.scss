@@ -1,0 +1,35 @@
+/* type-scale.com */
+/* base size 16px, scale 1.125 major second */
+html {font-size: 100%;} /*16px*/
+
+body {
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4, h5 {
+  /* margin: 2.75rem 0 1.05rem; */
+  margin: 1.6rem 0 1.05rem;
+  &:first-child {
+    margin-top: 0;
+  }
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.802em;
+}
+
+h2 {font-size: 1.602em;}
+
+h3 {font-size: 1.424em;}
+
+h4 {font-size: 1.266em;}
+
+h5 {font-size: 1.125em;}
+
+small, .text_small {font-size: 0.889em;}
