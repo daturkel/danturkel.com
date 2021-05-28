@@ -1,0 +1,92 @@
+/*
+------------
+_layout.scss
+------------
+*/
+
+/* inspired by:
+ * - https://gridbyexample.com/examples/example13/ 
+ * - https://medium.com/free-code-camp/how-to-build-a-responsive-blog-design-with-bulma-css-c2257a17c16b 
+*/
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    [large-start]
+      0rem
+    [main-start]
+      minmax(min-content, $main-width)
+    [main-end]
+      0rem
+    [large-end];
+  @include desktop {
+    grid-template-columns:
+      [large-start]
+        minmax(0rem,10rem)
+      [main-start]
+        $main-width
+      [main-end]
+        minmax(0rem,10rem)
+      [large-end];
+  }
+  @include wide {
+    grid-template-columns:
+        1fr
+      [large-start]
+        10rem
+      [main-start]
+        $main-width
+      [main-end]
+        10rem
+      [large-end]
+        1fr;
+    }
+  }
+
+body {
+  margin-top: $container-margin-top;
+  margin-left: $container-margin-side;
+  margin-right: $container-margin-side;
+  align-items: baseline;
+}
+
+main *, header * {
+  grid-column: main;
+  margin-top: 0; // fix for non-collapsing margins inside grid
+}
+
+.large {
+  grid-column: large;
+}
+
+header {
+  .main-menu{ 
+    h1 {
+      margin-bottom: 0.25rem;
+    }
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      h1 {
+        margin-bottom: 0;
+      }
+    }
+  }
+  margin-bottom: $header-margin;
+}
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+    }
+    li:not(:last-child)::after {
+      content: " /"
+    }
+  }
+}
