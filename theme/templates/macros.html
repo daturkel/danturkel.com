@@ -1,0 +1,23 @@
+{# variable-width image module #}
+{%- macro image(src, size='', caption='', alt='') -%}
+{% if size == '' %}
+<div class="image">
+{% else %}
+<div class="image {{ size }}">
+{% endif %}
+<img src="{{ src }}"{% if alt != '' %} alt="{{ alt }}"{% endif %}>
+{% if caption != '' %}
+{{ caption|markdown }}
+{%- endif -%}
+</div>
+{%- endmacro -%}
+
+{# responsive youtube embed #}
+{%- macro youtube(src, caption='') %}
+<div class="youtube-container">
+  <div class="youtube">
+  <iframe src="{{ src }}" frameborder='0' allowfullscreen></iframe>
+  </div>
+  {% if caption != '' %}{{ caption|markdown -}}{% endif %}
+</div>
+{%- endmacro -%}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% if article %}
+  {% set this = article %}
+{% elif page %}
+  {% set this = page %}
+{% else %}
+  {% set this = None %}
+{% endif %}
+<head>
+  {% block head %}
+  {% block title %}
+  {% if this.title %}
+  <title>{{ this.title }} - {{ SITENAME }}</title>
+  {% else %}
+  <title>{{ SITENAME }}</title>
+  {% endif %}
+  {% endblock title %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{{ this.summary|striptags }}">
+  {% assets "stylesheet" %}
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+  {% endassets %}
+  <script async defer data-domain="danturkel.com" src="https://plausible.io/js/plausible.js"></script>
+  {% block math %}{% if this.math == 'true' %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},]});"></script>{% endif %}
+  {% endblock math %}
+  {% endblock head %}
+</head>
+<body>
+  <header class="grid">
+    <section class="main-menu">
+    <h1><a href="{{ SITEURL }}/">Dan Turkel</a></h1>
+    {% block nav %}
+    <nav>
+      <ul>
+        {% for nav_page in NAV_MENU %}
+        {% if nav_page.url == this.url %}
+        <li class="active"><mark><a href="{% if not nav_page.ext %}{{ SITEURL }}/{% endif %}{{ nav_page.url }}">{{ nav_page.title }}</a></mark></li>
+        {% else %}
+        <li><a href="{% if not nav_page.ext %}{{ SITEURL }}/{% endif %}{{ nav_page.url }}">{{ nav_page.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endblock nav %}
+    </section>
+  </header>
+  <main class="grid">
+    {% block content %}
+      {% if this.title %}
+      <h2>{{ this.title }}</h2>
+      {% endif %}
+      {{ this.content }}
+    {% endblock content %}
+  </main>
+</body>
+</html>
