@@ -35,16 +35,16 @@ PAGE_PATHS = ["pages"]
 FORMATTED_FIELDS = ["summary"]
 
 # URL settings
-ARTICLE_URL = ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{date:%-d}/{slug}.html"
+ARTICLE_URL = ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{date:%d}/{slug}.html"
 SLUG_REGEX_SUBSTITUTIONS = [
     (r"[^\w\s-]", ""),  # remove non-alphabetical/whitespace/'-' chars
     (r"(?u)\A\s*", ""),  # strip leading whitespace
     (r"(?u)\s*\Z", ""),  # strip trailing whitespace
     (r"[-\s]+", "-"),  # reduce multiple whitespace or '-' to single '-'
-    (r"_", "-"),
+    (r"_", "-"), # underscores to hyphens
 ]
 PAGE_URL = PAGE_SAVE_AS = "{slug}.html"
-SLUGIFY_SOURCE = "basename"  # use filename to autogenerate slug
+SLUGIFY_SOURCE = "title"  # use post/page title to autogenerate slug
 SLUGIFY_PRESERVE_CASE = False
 STATIC_PATHS = ["images", "misc"]
 EXTRA_PATH_METADATA = {
@@ -103,3 +103,9 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
+#SITEURL = "https://danturkel.com"
+FEED_DOMAIN = SITEURL
+FEED_ALL_ATOM = "feeds/rss.xml"
+CATEGORY_FEED_ATOM = None
+RSS_FEED_SUMMARY_ONLY = False

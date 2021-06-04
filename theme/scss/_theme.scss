@@ -8,37 +8,10 @@ _theme.scss
   text-decoration-skip-ink: auto;
 }
 
-/// one day
-/// https://medium.com/clear-left-thinking/all-you-need-to-know-about-hyphenation-in-css-2baee2d89179
-/// p {
-///   -webkit-hyphens: auto;
-///   -webkit-hyphenate-limit-before: 3;
-///   -webkit-hyphenate-limit-after: 3;
-///   -webkit-hyphenate-limit-chars: 6 3 3;
-///   -webkit-hyphenate-limit-lines: 2;
-///   -webkit-hyphenate-limit-last: always;
-///   -webkit-hyphenate-limit-zone: 8%;
-///   -moz-hyphens: auto;
-///   -moz-hyphenate-limit-chars: 6 3 3;
-///   -moz-hyphenate-limit-lines: 2;
-///   -moz-hyphenate-limit-last: always;
-///   -moz-hyphenate-limit-zone: 8%;
-///   -ms-hyphens: auto;
-///   -ms-hyphenate-limit-chars: 6 3 3;
-///   -ms-hyphenate-limit-lines: 2;
-///   -ms-hyphenate-limit-last: always;
-///   -ms-hyphenate-limit-zone: 8%;
-///   hyphens: auto;
-///   hyphenate-limit-chars: 6 3 3;
-///   hyphenate-limit-lines: 2;
-///   hyphenate-limit-last: always;
-///   hyphenate-limit-zone: 8%;
-/// }
-
 a {
   color: $link-color;
   text-decoration: none;
-  &:focus, &:active {
+  &:active {
     outline: none;
   }
   &:hover {
@@ -47,7 +20,7 @@ a {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+:is(h1, h2, h3, h4, h5, h6) {
   a {
     @include reverse-link;
   }
@@ -62,22 +35,9 @@ code {
   @include highlight(#f8f8f8);
   color: #000000;
 }
-/* don't let the above override actual syntax highlighting */
-.highlight {
-  code {
-    background: unset;
-    color: unset;
-    padding: 0;
-  }
-}
 
-main .highlight {
-  // code blocks should have a small bottom margin
-  margin-bottom: 0.75rem;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  & + h1, & + h2, & + h3, & + h4, & + h5, & + h6 {
+:is(h1, h2, h3, h4, h5, h6) {
+  & + :is(h1, h2, h3, h4, h5, h6) {
     // remove lots of extra space btween adjacent headings
     margin-top: 0;
   }
@@ -90,6 +50,10 @@ img {
 hr {
   border: none;
   border-top: 1px solid #000000;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 /* classes */
@@ -108,6 +72,8 @@ hr {
 }
 
 .highlight { 
+  // code blocks should have a small bottom margin
+  margin-bottom: 0.75rem;
   border-radius: $border-radius; 
   pre { 
     font-size: 0.75rem; 
@@ -117,6 +83,11 @@ hr {
     word-wrap: normal; 
     line-height: 1.5;
     margin-bottom: 0;
+  }
+  code {
+    background: unset;
+    color: unset;
+    padding: 0;
   }
 }
 
@@ -136,20 +107,16 @@ h2#title {
   margin-bottom: 0.25rem; 
 }
 
-// match the normal margin-bottom of an h2
-h2#title + p.metadata {
-  margin-bottom: 1.05rem;
-}
-
-
 p.metadata {
   color: $light-text;
   margin-top: 0;
   margin-bottom: 0.5rem;
+  font-size: $small-size;
 }
 
-.metadata {
-  font-size: $small-size;
+// match the normal margin-bottom of an h2
+h2#title + p.metadata {
+  margin-bottom: 1.05rem;
 }
 
 div.youtube-container {

@@ -1,5 +1,6 @@
 /* type-scale.com */
 /* base size 16px, scale 1.125 major second */
+/* added .small class to last rule's selector */
 html {font-size: 100%;} /*16px*/
 
 body {
@@ -32,4 +33,4 @@ h4 {font-size: 1.266em;}
 
 h5 {font-size: 1.125em;}
 
-small, .text_small {font-size: 0.889em;}
+small, .text_small, .small {font-size: 0.889em;}

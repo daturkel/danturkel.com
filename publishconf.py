@@ -15,7 +15,7 @@ SITEURL = "https://danturkel.com"
 RELATIVE_URLS = False
 
 FEED_DOMAIN = SITEURL
-FEED_ALL_ATOM = "feeds/all.atom.xml"
+FEED_ALL_ATOM = "feeds/rss.xml"
 CATEGORY_FEED_ATOM = None
 RSS_FEED_SUMMARY_ONLY = False
 

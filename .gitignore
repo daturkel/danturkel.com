@@ -1,6 +1,6 @@
 .DS_Store
 __pycache__/
-content/pages/*.md
-content/posts/*.md
+content/pages/*
+content/posts/*
 output
 content/images/*
