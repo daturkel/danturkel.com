@@ -4,3 +4,4 @@ content/pages/*
 content/posts/*
 output
 content/images/*
+publish.sh

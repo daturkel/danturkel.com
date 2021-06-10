@@ -1,0 +1,7 @@
+{% extends "article.html" %}
+{% from "macros.html" import image %}
+{% block content %}
+  <h2 id="title">{{ this.title }}</h2>
+  <p class="metadata">Posted <time datetime="{{ article.date|strftime("%Y-%m-%d") }}">{{ article.locale_date }}</time> </p>
+  {{ this.content }}
+{% endblock content %}
