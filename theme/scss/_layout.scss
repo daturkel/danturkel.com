@@ -59,6 +59,12 @@ main *, header * {
   grid-column: large;
 }
 
+.small {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header {
   .main-menu{ 
     h1 {
