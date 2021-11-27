@@ -27,7 +27,7 @@ a {
 }
 
 mark {
-  @include highlight();
+  padding: $mark-padding;
 }
 
 code {
@@ -67,7 +67,7 @@ blockquote p:last-child {
     font-size: $small-size;
     margin-top: 0.25rem;
     margin-bottom: 0;
-    line-height: 1rem;
+    line-height: 1.5;
   }
   margin-bottom: 0.5rem;
 }
@@ -75,7 +75,7 @@ blockquote p:last-child {
 .highlight { 
   // code blocks should have a small bottom margin
   margin-bottom: 0.75rem;
-  border-radius: $border-radius; 
+  border-radius: $border-radius;
   pre { 
     font-size: 0.75rem; 
     overflow-x: auto; 
