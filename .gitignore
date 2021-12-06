@@ -6,3 +6,4 @@ output
 content/images/*
 publish.sh
 .env
+.python-version
