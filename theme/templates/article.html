@@ -19,7 +19,7 @@
 {% endblock content %}
 {% block footer %}
 <footer>
-  {% if (not this.no_footer) or (not this.no_copyright) %}<hr>{% endif %}
+  {% if (not this.no_footer) or (this.copyright) %}<hr>{% endif %}
   {% if not this.no_footer %}
   {% if this.footer %}
   <p>{{ this.footer }}</p>
@@ -27,7 +27,7 @@
   <p>If you enjoyed this post, please share it with a friend. If you'd like to share your thoughts or feedback, don't hestitate to <a href="mailto:daturkel@gmail.com">drop me a line</a>.</p>
   {% endif %}
   {% endif %}
-  {% if not this.no_copyright %}
+  {% if this.copyright %}
   <p>© 2021 Dan Turkel</p>
   {% endif %}
 </footer>

@@ -5,3 +5,4 @@ content/posts/*
 output
 content/images/*
 publish.sh
+.env

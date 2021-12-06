@@ -9,26 +9,47 @@
 {% endif %}
 <head>
   {% block head %}
-  {% block title %}
-  {% if this.title %}
-  <title>{{ this.title }} - {{ SITENAME }}</title>
-  {% else %}
-  <title>{{ SITENAME }}</title>
-  {% endif %}
+    {% block title %}
+    {% if this.title %}
+    <title>{{ this.title }} - {{ SITENAME }}</title>
+    {% else %}
+    <title>{{ SITENAME }}</title>
+    {% endif %}
   {% endblock title %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="{{ AUTHOR }}">
   <meta name="description" content="{{ this.summary|striptags }}">
+  {% block social %}
+    {% if article and article.social_image %}
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="{{ article.social_image }}">
+    {% else %}
+    <meta property="twitter:card" content="summary" />
+    {% endif %}
+    <meta property="og:site_name" content="Dan Turkel dot com" />
+    <meta property="og:title" content="{{this.title}} - {{ SITENAME }}" />
+    {% if article and article.date %}
+    <meta property="article:published_time" content="{{ article.date }}" />
+    {% endif%}
+    <meta name="twitter:creator" content="@daturkel" />
+    {% if article and article.summary %}
+    <meta name="twitter:description" content="{{ article.summary|striptags }}" />
+    <meta property="og:description" content="{{ article.summary|striptags }}" />
+    {% else %}
+    <meta name="twitter:description" content="The personal site of Dan Turkel."/>
+    <meta property="og:description" content="The personal site of Dan Turkel." />
+    {% endif%} 
+  {% endblock social %}
   {% assets "stylesheet" %}
   <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
   {% endassets %}
   <link type="application/atom+xml" rel="alternate" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" title="Dan Turkel (dot) com" />
   <script defer data-domain="danturkel.com" src="//pl.danturkel.workers.dev/js/script.js"></script>
   {% block math %}{% if this.math == 'true' %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},]});"></script>{% endif %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},]});"></script>{% endif %}
   {% endblock math %}
   {% endblock head %}
 </head>

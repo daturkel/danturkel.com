@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 import markdown
+import pelican
 import jinja2
 
 LOAD_CONTENT_CACHE = False
@@ -41,7 +42,7 @@ SLUG_REGEX_SUBSTITUTIONS = [
     (r"(?u)\A\s*", ""),  # strip leading whitespace
     (r"(?u)\s*\Z", ""),  # strip trailing whitespace
     (r"[-\s]+", "-"),  # reduce multiple whitespace or '-' to single '-'
-    (r"_", "-"), # underscores to hyphens
+    (r"_", "-"),  # underscores to hyphens
 ]
 PAGE_URL = PAGE_SAVE_AS = "{slug}.html"
 SLUGIFY_SOURCE = "title"  # use post/page title to autogenerate slug
@@ -85,7 +86,6 @@ JINJA_ENVIRONMENT = {
 md = markdown.Markdown(extensions=["meta"])
 JINJA_FILTERS = {"markdown": lambda text: jinja2.Markup(md.convert(text))}
 
-# PLUGIN_PATHS = ["./pelican-plugins"]
 PLUGINS = ["webassets", "jinja2content"]
 WEBASSETS_CONFIG = (
     ("url_expire", False),
@@ -104,7 +104,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-#SITEURL = "https://danturkel.com"
+# SITEURL = "https://danturkel.com"
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = "feeds/rss.xml"
 CATEGORY_FEED_ATOM = None

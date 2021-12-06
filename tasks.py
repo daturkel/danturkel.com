@@ -6,12 +6,15 @@ import shutil
 import sys
 import datetime
 
+from dotenv import load_dotenv
 from invoke import task
 from invoke.main import program
 from invoke.util import cd
 from pelican import main as pelican_main
 from pelican.server import ComplexHTTPRequestHandler, RootedHTTPServer
 from pelican.settings import DEFAULT_CONFIG, get_settings_from_file
+
+load_dotenv()
 
 SETTINGS_FILE_BASE = 'pelicanconf.py'
 SETTINGS = {}
@@ -25,10 +28,10 @@ CONFIG = {
     # Output path. Can be absolute or relative to tasks.py. Default: 'output'
     'deploy_path': SETTINGS['OUTPUT_PATH'],
     # Remote server configuration
-    'ssh_user': 'root',
-    'ssh_host': 'localhost',
-    'ssh_port': '22',
-    'ssh_path': '/var/www',
+    'ssh_user': os.environ['SSH_USER'],
+    'ssh_host': os.environ['SSH_HOST'],
+    'ssh_port': os.environ['SSH_PORT'],
+    'ssh_path': os.environ['SSH_PATH'],
     # Host and port for `serve`
     'host': 'localhost',
     'port': 8000,
