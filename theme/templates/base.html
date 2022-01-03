@@ -20,6 +20,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="{{ AUTHOR }}">
   <meta name="description" content="{{ this.summary|striptags }}">
+  <link rel="canonical" href="{{ SITEURL }}{% if this.url %}/{{ this.url }}{% endif %}" />
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   {% block social %}
     {% if article and article.social_image %}
     <meta property="twitter:card" content="summary_large_image" />

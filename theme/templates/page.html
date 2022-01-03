@@ -1,1 +1,16 @@
 {% extends "base.html" %}
+{% block footer %}
+<footer>
+  {% if (not this.no_footer) or (this.copyright) %}<hr>{% endif %}
+  {% if not this.no_footer %}
+  {% if this.footer %}
+  <p>{{ this.footer }}</p>
+  {% else %}
+  <p>If you enjoyed this post, please share it with a friend. If you'd like to share your thoughts or feedback, don't hestitate to <a href="mailto:daturkel@gmail.com">drop me a line</a>.</p>
+  {% endif %}
+  {% if this.copyright %}
+  <p>Photographs © 2022 Dan Turkel</p>
+  {% endif %}
+  {% endif %}
+</footer>
+{% endblock footer %}
