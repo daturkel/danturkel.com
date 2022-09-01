@@ -16,6 +16,7 @@ NAV_MENU = (
     {"title": "Home", "url": "", "ext": False},
     {"title": "About", "url": "about.html", "ext": False},
     {"title": "Writing", "url": "writing.html", "ext": False},
+    {"title": "Photos", "url": "photos.html", "ext": False},
     {"title": "GitHub", "url": "https://github.com/daturkel", "ext": True, "rel_me": True},
 )
 

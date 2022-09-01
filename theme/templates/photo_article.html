@@ -1,7 +1,25 @@
 {% extends "article.html" %}
 {% from "macros.html" import image %}
+{% block nav %}
+  <nav>
+    <ul>
+      {% for nav_page in NAV_MENU %}
+      {% if nav_page.url == "photos.html" %}
+      <li class="active"><mark><a href="{% if not nav_page.ext %}{{ SITEURL }}/{% endif %}{{ nav_page.url }}">{{ nav_page.title }}</a></mark></li>
+      {% else %}
+      <li><a href="{% if not nav_page.ext %}{{ SITEURL }}/{% endif %}{{ nav_page.url }}">{{ nav_page.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock nav %}
 {% block content %}
   <h2 id="title">{{ this.title }}</h2>
   <p class="metadata">Posted <time datetime="{{ article.date|strftime("%Y-%m-%d") }}">{{ article.locale_date }}</time> </p>
   {{ this.content }}
 {% endblock content %}
+{% block footer %}
+<footer>
+  <p>Photographs © 2022 Dan Turkel</p>
+</footer>
+{% endblock footer %}
