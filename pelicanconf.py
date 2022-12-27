@@ -17,7 +17,12 @@ NAV_MENU = (
     {"title": "About", "url": "about.html", "ext": False},
     {"title": "Writing", "url": "writing.html", "ext": False},
     {"title": "Photos", "url": "photos.html", "ext": False},
-    {"title": "GitHub", "url": "https://github.com/daturkel", "ext": True, "rel_me": True},
+    {
+        "title": "GitHub",
+        "url": "https://github.com/daturkel",
+        "ext": True,
+        "rel_me": True,
+    },
 )
 
 THEME = "theme"
@@ -76,6 +81,7 @@ MARKDOWN = {
         "markdown.extensions.footnotes": {"BACKLINK_TEXT": "&uarr;"},
         "markdown.extensions.meta": {},
         "markdown.extensions.smarty": {},
+        "pymdownx.tilde": {},
     },
     "output_format": "html5",
 }
