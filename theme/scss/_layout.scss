@@ -15,7 +15,7 @@ _layout.scss
     [large-start]
       0rem
     [main-start]
-      minmax(min-content, $main-width)
+      minmax(0, $main-width)
     [main-end]
       0rem
     [large-end];
