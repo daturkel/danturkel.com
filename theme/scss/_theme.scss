@@ -36,6 +36,13 @@ code {
   color: #000000;
 }
 
+a code {
+  color: $link-color;
+  &:hover {
+    color: $link-color-dark;
+  }
+}
+
 :is(h1, h2, h3, h4, h5, h6) {
   & + :is(h1, h2, h3, h4, h5, h6) {
     // remove lots of extra space btween adjacent headings
@@ -141,5 +148,23 @@ div.youtube-container {
     margin-top: 0.25rem;
     margin-bottom: 0;
   }
+  margin-bottom: 0.5rem;
+}
+
+// footnote spacing too big
+.footnote ol {
+  padding-left: 0;
+  list-style: inside decimal;
+  li { 
+    margin-bottom: 0.6rem;
+    p {
+      display: inline;
+    }
+  }
+}
+
+// not fully supported yet
+// paragraphs followed by images don't need *that* much spacing
+p:has(+ .image), p:has(+ .youtube-container) {
   margin-bottom: 0.5rem;
 }

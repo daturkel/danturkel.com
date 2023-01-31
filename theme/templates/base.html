@@ -11,7 +11,7 @@
   {% block head %}
     {% block title %}
     {% if this.title %}
-    <title>{{ this.title }} - {{ SITENAME }}</title>
+    <title>{{ this.title|striptags }} - {{ SITENAME }}</title>
     {% else %}
     <title>{{ SITENAME }}</title>
     {% endif %}
