@@ -60,6 +60,14 @@ hr {
   width: 100%;
 }
 
+blockquote {
+  padding: 0.5rem 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #f8f8f8; // same as code block
+  border-radius: $border-radius;
+}
+
 blockquote p:last-child {
   margin-bottom: 0;
 }
