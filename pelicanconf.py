@@ -1,9 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-
-import markdown
-import pelican
 import jinja2
+import markdown
 
 LOAD_CONTENT_CACHE = False
 
@@ -93,7 +89,7 @@ JINJA_ENVIRONMENT = {
 md = markdown.Markdown(extensions=["meta"])
 JINJA_FILTERS = {"markdown": lambda text: jinja2.Markup(md.convert(text))}
 
-PLUGINS = ["webassets", "jinja2content"]
+PLUGINS = ["webassets", "jinja2content", "pelican_redirect"]
 WEBASSETS_CONFIG = (
     ("url_expire", False),
     ("versions", False),
