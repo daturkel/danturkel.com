@@ -1,5 +1,6 @@
 import jinja2
 import markdown
+from markupsafe import Markup
 
 LOAD_CONTENT_CACHE = False
 
@@ -87,7 +88,7 @@ JINJA_ENVIRONMENT = {
 }
 
 md = markdown.Markdown(extensions=["meta"])
-JINJA_FILTERS = {"markdown": lambda text: jinja2.Markup(md.convert(text))}
+JINJA_FILTERS = {"markdown": lambda text: Markup(md.convert(text))}
 
 PLUGINS = ["webassets", "jinja2content", "pelican_redirect"]
 WEBASSETS_CONFIG = (

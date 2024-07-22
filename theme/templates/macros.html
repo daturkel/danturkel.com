@@ -1,11 +1,15 @@
 {# variable-width image module #}
-{%- macro image(src, size='', caption='', alt='') -%}
+{%- macro image(src, size='', caption='', link='false', alt='') -%}
 {% if size == '' %}
 <div class="image">
 {% else %}
 <div class="image {{ size }}">
 {% endif %}
+{% if link=='true' %}
+<a href="{{ src }}" {% if caption!=''%}data-caption="{{ caption|markdown }}"{% endif %}>
+{% endif %}
 <img src="{{ src }}"{% if alt != '' %} alt="{{ alt }}"{% endif %}>
+{% if link=='true' %}</a>{% endif %}
 {% if caption != '' %}
 {{ caption|markdown }}
 {%- endif -%}

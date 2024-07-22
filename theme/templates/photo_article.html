@@ -1,5 +1,9 @@
 {% extends "article.html" %}
 {% from "macros.html" import image %}
+{% block head %}
+{{ super() }}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js" async></script>
+{% endblock head %}
 {% block nav %}
   <nav>
     <ul>
@@ -15,11 +19,20 @@
 {% endblock nav %}
 {% block content %}
   <h2 id="title">{{ this.title }}</h2>
-  <p class="metadata">Posted <time datetime="{{ article.date|strftime("%Y-%m-%d") }}">{{ article.locale_date }}</time> </p>
+  <!-- <p class="metadata">Posted <time datetime="{{ article.date|strftime("%Y-%m-%d") }}">{{ article.locale_date }}</time></p> -->
   {{ this.content }}
 {% endblock content %}
 {% block footer %}
 <footer>
   <p>Photographs © 2024 Dan Turkel</p>
 </footer>
+<script>
+      baguetteBox.run('main', {
+        captions: false,
+        noScrollbars: true,
+        async: true,
+        preload: 3,
+        animation: false,
+      });
+</script>
 {% endblock footer %}

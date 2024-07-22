@@ -6,7 +6,7 @@
   {% if article.template == "photo_article" %}
 <li>
   <a class="post" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-  <p class="metadata"><time datetime="{{ article.date|strftime("%Y-%m-%d") }}">{{ article.locale_date }}</time></p>
+  <!-- <p class="metadata"><time datetime="{{ article.date|strftime("%Y-%m-%d") }}">Posted {{ article.locale_date }}</time></p> -->
   <a href="{{ SITEURL }}/{{ article.url }}">{{ image(SITEURL + article.date|strftime("/%Y/%m/%d/") + article.lead_image) }}</a>
 </li>
   {% endif %}
