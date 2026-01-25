@@ -5,11 +5,10 @@
 # explicitly specify it as your config file.
 
 import sys
+
 sys.path.append(".")
 
 from pelicanconf import *
-
-
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = "https://danturkel.com"

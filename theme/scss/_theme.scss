@@ -178,3 +178,7 @@ div.youtube-container {
 p:has(+ .image), p:has(+ .youtube-container) {
   margin-bottom: 0.5rem;
 }
+
+main iframe {
+  margin-bottom: 1.15rem;
+}
